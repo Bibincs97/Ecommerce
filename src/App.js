@@ -1,17 +1,19 @@
-import { Fragment } from "react";
-import Navbar from "./pages/Navbar/Navbar";
-import Products from "./pages/ProductSection/Products";
-import Slider from "./pages/Slider/Slider";
-import { CartProvider } from "react-use-cart";
+import { Fragment } from 'react';
+import Navbar from './pages/Navbar/Navbar';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import TotalCartBlock from './Components/TotalCart/TotalCartBlock';
 
 function App() {
   return (
     <Fragment>
-      <CartProvider>
+      <Router>
         <Navbar />
-        <Slider />
-        <Products />
-      </CartProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<TotalCartBlock />} />
+        </Routes>
+      </Router>
     </Fragment>
   );
 }
