@@ -4,12 +4,13 @@ import {
   Box,
   Container,
   CircularProgress,
-} from "@mui/material";
+} from '@mui/material';
+import zIndex from '@mui/material/styles/zIndex';
 
-import React, { useEffect } from "react";
-import { useState } from "react";
-import axios from "../../Axios";
-import ItemCart from "./ItemCart";
+import React, { useEffect } from 'react';
+import { useState } from 'react';
+import axios from '../../Axios';
+import ItemCart from './ItemCart';
 
 const Products = () => {
   const [state, setState] = useState([]);
@@ -17,7 +18,7 @@ const Products = () => {
 
   useEffect(() => {
     const data = async () => {
-      const products = await axios.get("/products");
+      const products = await axios.get('/products');
       setState(products.data);
       setLoading(false);
     };
@@ -36,10 +37,10 @@ const Products = () => {
         {loading ? (
           <Box
             sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              marginTop: "10px",
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginTop: '10px',
             }}
           >
             <CircularProgress />
@@ -53,6 +54,7 @@ const Products = () => {
                 image={product.image}
                 price={product.price}
                 title={product.title}
+                rating={product.rating}
                 products={product}
               />
             );
