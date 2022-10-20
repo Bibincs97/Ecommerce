@@ -1,12 +1,12 @@
-import React, { Fragment } from 'react';
-import Products from './ProductSection/Products';
-import Section from './Section/Section';
+import React, { Fragment } from "react";
+import Products from "./ProductSection/Products";
+import Section from "./Section/Section";
 
-const Home = () => {
+const Home = ({ setSearchby, Searchby }) => {
   return (
     <Fragment>
       <Section />
-      <Products />
+      <Products Searchby={Searchby} setSearchby={setSearchby} />
     </Fragment>
   );
 };

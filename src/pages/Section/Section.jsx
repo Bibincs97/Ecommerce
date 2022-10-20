@@ -1,5 +1,5 @@
-import { Button, Typography, Stack, Box, Container } from '@mui/material';
-import React from 'react';
+import { Button, Typography, Stack, Box, Container } from "@mui/material";
+import React from "react";
 
 const Section = () => {
   return (
@@ -7,14 +7,14 @@ const Section = () => {
       <Box
         className="text-center"
         marginTop={1}
-        sx={{ background: 'rgb(157 95 59)' }}
+        sx={{ background: "rgb(157 95 59)" }}
         padding={4}
       >
         <Typography className="fs-40 fw-500 text-light" gutterBottom>
           FREE SHIPPING
         </Typography>
         <Typography className="fs-24 fw-500 text-light" gutterBottom>
-          ON ORDERS OVER RS50 - USE COUPON CODE OVER200
+          ON ORDERS OVER $50 - USE COUPON CODE OVER $200
         </Typography>
         <Stack
           direction="row"
@@ -25,11 +25,11 @@ const Section = () => {
           <Button
             className="px-4"
             sx={{
-              border: '3px solid #fff',
-              color: '#fff',
-              '&:hover': {
-                background: '#fff',
-                color: '#111',
+              border: "3px solid #fff",
+              color: "#fff",
+              "&:hover": {
+                background: "#fff",
+                color: "#111",
               },
             }}
           >
@@ -38,11 +38,11 @@ const Section = () => {
           <Button
             className=" px-4"
             sx={{
-              border: '3px solid #fff',
-              color: '#fff',
-              '&:hover': {
-                background: '#fff',
-                color: '#111',
+              border: "3px solid #fff",
+              color: "#fff",
+              "&:hover": {
+                background: "#fff",
+                color: "#111",
               },
             }}
           >
@@ -51,11 +51,11 @@ const Section = () => {
           <Button
             className="px-4"
             sx={{
-              border: '3px solid #fff',
-              color: '#fff',
-              '&:hover': {
-                background: '#fff',
-                color: '#111',
+              border: "3px solid #fff",
+              color: "#fff",
+              "&:hover": {
+                background: "#fff",
+                color: "#111",
               },
             }}
           >

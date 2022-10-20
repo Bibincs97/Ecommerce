@@ -4,21 +4,20 @@ import {
   Box,
   Container,
   CircularProgress,
-} from '@mui/material';
-import zIndex from '@mui/material/styles/zIndex';
+} from "@mui/material";
 
-import React, { useEffect } from 'react';
-import { useState } from 'react';
-import axios from '../../Axios';
-import ItemCart from './ItemCart';
+import React, { useEffect } from "react";
+import { useState } from "react";
+import axios from "../../Axios";
+import ItemCart from "./ItemCart";
 
-const Products = () => {
+const Products = ({ Searchby }) => {
   const [state, setState] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const data = async () => {
-      const products = await axios.get('/products');
+      const products = await axios.get("/products");
       setState(products.data);
       setLoading(false);
     };
@@ -37,28 +36,38 @@ const Products = () => {
         {loading ? (
           <Box
             sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginTop: '10px',
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              marginTop: "10px",
             }}
           >
             <CircularProgress />
             <Typography className="fs-20 fw-500 px-3">Loading...</Typography>
           </Box>
         ) : (
-          state.map((product) => {
-            return (
-              <ItemCart
-                key={product.id}
-                image={product.image}
-                price={product.price}
-                title={product.title}
-                rating={product.rating}
-                products={product}
-              />
-            );
-          })
+          state
+            .filter((item) => {
+              if (Searchby === "") {
+                return item;
+              } else if (
+                item.title.toLowerCase().includes(Searchby.toLowerCase())
+              ) {
+                return item;
+              }
+            })
+            .map((product) => {
+              return (
+                <ItemCart
+                  key={product.id}
+                  image={product.image}
+                  price={product.price}
+                  title={product.title}
+                  rating={product.rating}
+                  products={product}
+                />
+              );
+            })
         )}
       </Grid>
     </Container>

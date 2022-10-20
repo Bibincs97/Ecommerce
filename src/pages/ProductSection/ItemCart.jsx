@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from "react";
 import {
   Button,
   Card,
@@ -6,23 +6,41 @@ import {
   CardContent,
   CardMedia,
   Grid,
+  Rating,
   Typography,
-} from '@mui/material';
-import { useCart } from 'react-use-cart';
+} from "@mui/material";
+import { useCart } from "react-use-cart";
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles({
+  root: {
+    textDecoration: "none",
+    color: "#111",
+    "&:active": {
+      borderBottom: "3px solid rgb(157 95 59)",
+      color: "#111",
+      paddingBottom: "6px",
+    },
+  },
+  menu: {
+    color: "#111",
+  },
+});
 
 const ItemCart = ({ image, price, title, products, rating }) => {
+  const classes = useStyles();
   const { addItem } = useCart();
   return (
     <Fragment>
       <Grid item xs={12} sm={6} md={3}>
         <Card
           sx={{
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            background: '#fff',
-            borderRadius: '10px',
-            border: '1px solid #ccc',
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            background: "#fff",
+            borderRadius: "10px",
+            border: "1px solid #ccc",
           }}
           elevation={0}
         >
@@ -32,12 +50,12 @@ const ItemCart = ({ image, price, title, products, rating }) => {
             width="140"
             image={image}
             alt={title}
-            sx={{ objectFit: 'contain', padding: '10px' }}
+            sx={{ objectFit: "contain", padding: "10px" }}
           />
           <Grid container>
             <Grid item md={8} sm={12}>
               <CardContent
-                sx={{ flexGrow: 1, padding: '2px', paddingLeft: '18px' }}
+                sx={{ flexGrow: 1, padding: "2px", paddingLeft: "18px" }}
               >
                 <Typography
                   gutterBottom
@@ -47,7 +65,15 @@ const ItemCart = ({ image, price, title, products, rating }) => {
                 >
                   {title}
                 </Typography>
-                <Typography className="fs-18 fw-500">Rs. {price}</Typography>
+                <Rating
+                  name="read-only"
+                  value={rating.rate}
+                  readOnly
+                  sx={{ paddingTop: "5px" }}
+                />
+                <Typography className="fs-18 fw-500 pt-2">
+                  Price: ${price}
+                </Typography>
               </CardContent>
             </Grid>
             <Grid
@@ -64,14 +90,14 @@ const ItemCart = ({ image, price, title, products, rating }) => {
                     addItem(products);
                   }}
                   sx={{
-                    background: '#111',
-                    borderRadius: '10px',
-                    border: '1px solid #111',
-                    padding: '9px',
-                    color: '#fff',
-                    '&:hover': {
-                      border: '1px solid #111',
-                      color: '#111',
+                    background: "#111",
+                    borderRadius: "10px",
+                    border: "1px solid #111",
+                    padding: "8px",
+                    color: "#fff",
+                    "&:hover": {
+                      border: "1px solid #111",
+                      color: "#111",
                     },
                   }}
                 >

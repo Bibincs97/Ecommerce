@@ -11,16 +11,16 @@ import {
   TableHead,
   TableRow,
   Typography,
-} from '@mui/material';
-import { Container } from '@mui/system';
-import React from 'react';
-import { useCart } from 'react-use-cart';
+} from "@mui/material";
+import { Container } from "@mui/system";
+import React from "react";
+import { useCart } from "react-use-cart";
 
 const TotalCartBlock = () => {
   let { items, updateItemQuantity, cartTotal, removeItem, isEmpty } = useCart();
   console.log(items);
   return (
-    <Container maxWidth="xl" sx={{ marginTop: '30px' }}>
+    <Container maxWidth="xl" sx={{ marginTop: "30px" }}>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -70,18 +70,19 @@ const TotalCartBlock = () => {
                     </Grid>
                   </TableCell>
                   <TableCell align="right" className="fs-16 fw-500 text-dark">
-                    {item.price}
+                    ${item.price}
                   </TableCell>
                   <TableCell
                     sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'flex-end',
-                      height: '170px',
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "flex-end",
+                      height: "170px",
                     }}
                   >
                     <Stack direction="row">
                       <Button
+                        sx={{ border: "2px solid #111" }}
                         onClick={() => {
                           updateItemQuantity(item.id, item.quantity - 1);
                         }}
@@ -96,8 +97,9 @@ const TotalCartBlock = () => {
                         </Typography>
                       </Button>
                       <Button
+                        sx={{ border: "2px solid #111" }}
                         onClick={() => {
-                          updateItemQuantity(item.id, item.quantity - 1);
+                          updateItemQuantity(item.id, item.quantity + 1);
                         }}
                       >
                         <Typography className="fs-20 fw-500 text-dark">
@@ -106,6 +108,8 @@ const TotalCartBlock = () => {
                       </Button>
                     </Stack>
                     <Typography
+                      paddingLeft={2}
+                      className="text-decoration-underline"
                       onClick={() => {
                         removeItem(item.id);
                       }}
@@ -114,7 +118,7 @@ const TotalCartBlock = () => {
                     </Typography>
                   </TableCell>
                   <TableCell align="right" className="fs-16 fw-500 text-dark">
-                    {item.itemTotal}
+                    ${item.itemTotal}
                   </TableCell>
                 </TableRow>
               ))
@@ -127,9 +131,9 @@ const TotalCartBlock = () => {
         </Table>
       </TableContainer>
 
-      <Box sx={{ textAlign: 'right', marginTop: '18px' }}>
+      <Box sx={{ textAlign: "right", marginTop: "18px" }}>
         <Typography className="fs-20 fw-500 text-dark">
-          Subtotal Rs: {cartTotal}
+          Subtotal $: {cartTotal}
         </Typography>
       </Box>
     </Container>
